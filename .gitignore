@@ -1,0 +1,46 @@
+# Ignore JAR files
+*.jar
+
+# Ignore log files and logs folder
+*.log
+logs/
+
+# Ignore classpath configuration files
+.classpath
+.project
+.settings/
+
+# Ignore IDE-specific folders (Eclipse, IntelliJ)
+.idea/
+*.iml
+*.iws
+
+# Ignore test output folders
+test-output/
+
+# Ignore Excel files
+*.xls
+*.xlsx
+
+# Ignore screenshot/image folders
+screenshots/
+images/
+captures/
+snaps/
+screens/
+
+# Maven target directory
+target/
+
+# Gradle build directory
+build/
+
+# Ignore temporary files
+*.tmp
+*.swp
+*~
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+/.metadata/
