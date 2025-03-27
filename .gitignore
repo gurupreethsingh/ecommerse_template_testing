@@ -23,6 +23,7 @@ test-output/
 *.xlsx
 
 # Ignore screenshot/image folders
+failed_screenshots/
 screenshots/
 images/
 captures/
