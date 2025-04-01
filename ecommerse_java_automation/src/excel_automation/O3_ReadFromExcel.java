@@ -14,7 +14,8 @@ public class O3_ReadFromExcel {
 	{
 		String value = null;
 		// where is the excel file. 
-		File f = new File("C:\\Users\\user\\Downloads\\invalid_email_combinations.xlsx");
+		String rootFolder = System.getProperty("user.dir");
+		File f = new File(rootFolder +"\\project_documents.xlsx");
 		// inside the file. 
 		FileInputStream fis = new FileInputStream(f);
 		
