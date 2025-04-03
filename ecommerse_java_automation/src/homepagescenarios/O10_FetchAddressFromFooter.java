@@ -25,11 +25,14 @@ public class O10_FetchAddressFromFooter implements AutomationConstants {
 			driver.get(urlOfHomepage);
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			driver.manage().window().maximize();
-			((JavascriptExecutor) driver).executeScript("window.scrollBy(0, document.body.scrollHeight)");
-			Thread.sleep(1000);
+			
+			
+//			((JavascriptExecutor) driver).executeScript("window.scrollBy(0, document.body.scrollHeight)");
+//			Thread.sleep(1000);
 			
 			// find address.
-			 WebElement addressText = driver.findElement(By.xpath("(//p)[2]/br"));
+			 WebElement addressText = driver.findElement(By.xpath("(//p)[2]"));
+			 
 			 JavascriptExecutor js = (JavascriptExecutor) driver;
 	          Thread.sleep(1000);
 	          js.executeScript("arguments[0].scrollIntoView(true)",    addressText );
