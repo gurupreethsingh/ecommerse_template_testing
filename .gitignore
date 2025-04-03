@@ -24,7 +24,6 @@ test-output/
 
 # Ignore screenshot/image folders
 failed_screenshots/
-screenshots/
 images/
 captures/
 snaps/
