@@ -46,7 +46,7 @@ public class O4_OpenFBPageClickFBLinkFooter implements AutomationConstants {
 					break;
 				}
 			}
-			wait.until(driver1 -> !driver1.getTitle().isEmpty());
+			 wait.until(driver1 -> !driver1.getTitle().isEmpty());
 			
 			// actual title and url of the opened page.
 			System.out.println("Actual title of login page : " + driver.getTitle());
