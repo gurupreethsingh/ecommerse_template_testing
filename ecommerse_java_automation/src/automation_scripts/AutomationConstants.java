@@ -14,6 +14,6 @@ public interface AutomationConstants
     
     String excelSheetPath = rootFolder + "project_documents.xlsx";
     
-    String screenshotFolder = rootFolder + "/failed_screehshots";
+    String screenshotFolder = rootFolder + "/failed_screenshots";
     
 }
