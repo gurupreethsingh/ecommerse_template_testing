@@ -23,7 +23,6 @@ public class O8_ClcikEveryCategory {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             driver.manage().window().maximize();
             driver.get("http://localhost:5173/");
-
             // Wait for Home title
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.titleContains("Home"));
@@ -41,8 +40,7 @@ public class O8_ClcikEveryCategory {
             		System.out.println("count is matching, Text case pass. ");
             		System.out.println("total category counts is " + count);
             	}
-            	
-            	
+
             	 for ( int i = 1; i<= allcategories.size(); i++)
             	{
             		 
@@ -63,8 +61,6 @@ public class O8_ClcikEveryCategory {
             		Thread.sleep(1000);
                 		driver.navigate().to("http://localhost:5173/home");
             	}
-            	
-            	
             }
             catch(Exception ex)
             {
@@ -74,8 +70,6 @@ public class O8_ClcikEveryCategory {
             	TakeScreenshot.getScreenshot(driver);
             }
            
-            
-
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("Failed to click Shop Now.");
