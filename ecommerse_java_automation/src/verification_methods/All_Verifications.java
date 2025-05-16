@@ -38,6 +38,8 @@
 package verification_methods;
 
 import java.time.Duration;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -189,7 +191,35 @@ public class All_Verifications {
 
     
     
-    
+    public static boolean verifyAlertIsPresentMoveToAlert(WebDriver driver, SoftAssert sa) 
+    {
+        boolean alertResult = false;
+
+        try 
+        {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.alertIsPresent());
+
+            System.out.println("[INFO] Alert is present. Switching to alert...");
+
+            // ✅ Switch to the alert and get the Alert object
+            Alert alert = driver.switchTo().alert();
+
+            // ✅ (Optional) You can print alert text if needed
+            System.out.println("[INFO] Alert text: " + alert.getText());
+
+            alertResult = true;
+        } 
+        catch (Exception ex) 
+        {
+            System.out.println("[WARN] Alert is not present after waiting.");
+            TakeScreenshot.getScreenshot(driver);
+            sa.fail("Expected alert is not present on the page.");
+        }
+
+        return alertResult;
+    }
+
 }
 
 
