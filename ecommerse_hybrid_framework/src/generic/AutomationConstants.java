@@ -1,8 +1,10 @@
 package generic;
 
+import org.openqa.selenium.WebDriver;
+
 public interface AutomationConstants 
 {
-	String urlOFAplication = "http://localhost:5173";
+	String urlOfApplication = "http://localhost:5173";
 	
     String urlOfHomepage = "http://localhost:5173/";
     
@@ -11,5 +13,7 @@ public interface AutomationConstants
     String excelSheetPath = rootFolder + "project_documents.xlsx";
     
     String screenshotFolder = rootFolder + "/failed_screehshots";
+    
+
 
 }

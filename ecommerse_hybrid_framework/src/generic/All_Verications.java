@@ -1,41 +1,4 @@
-//package verification_methods;
-//
-//import java.time.Duration;
-//
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.support.ui.ExpectedConditions;
-//import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.testng.asserts.SoftAssert;
-//
-//import screenshots.TakeScreenshot;
-//
-//public class All_Verifications
-//{
-//  public void verifyTitleMatch(String expectedTitle , WebDriver driver, SoftAssert sa)
-//  {   
-//	  // make the object of the WebDriverWait class. 
-//	  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//	  try
-//	  {
-//		  wait.until(ExpectedConditions.titleIs(expectedTitle));
-//		  System.out.println("Title is matchin,: "+ expectedTitle + "Matched with  : " + driver.getTitle());
-//	  }
-//	  catch(Exception ex)
-//	  {
-//		  ex.printStackTrace();
-//		  System.out.println("Test case failed, Title did not match.");
-//		  System.out.println("Expected title : "+ expectedTitle + " , But Found : " + driver.getTitle() );
-//		  // take the screenshot. 
-//		  TakeScreenshot.getScreenshot(driver);;
-//	  }
-//  }
-//}
-
-// till here without the softassert. 
-// now with soft assert code. 
-
-
-package verification_methods;
+package generic;
 
 import java.time.Duration;
 
@@ -45,11 +8,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
-import screenshots.TakeScreenshot;
 
-public class All_Verifications {
-
-    public static void verifyTitleMatch(String expectedTitle, WebDriver driver, SoftAssert sa) {
+public class All_Verications 
+{
+	WebDriver driver = null; 
+	
+	public All_Verications(WebDriver driver)
+	{
+		this.driver = driver;
+	}
+	
+	
+	public static void verifyTitleMatch(String expectedTitle, WebDriver driver, SoftAssert sa) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         try {
             wait.until(ExpectedConditions.titleIs(expectedTitle));
@@ -63,7 +33,7 @@ public class All_Verifications {
             ex.printStackTrace();
 
             String actualTitle = driver.getTitle();
-            System.out.println("Title did not match.");
+            System.out.println("❌ Title did not match.");
             System.out.println("Expected: " + expectedTitle + " | Found: " + actualTitle);
 
             TakeScreenshot.getScreenshot(driver);
@@ -81,11 +51,11 @@ public class All_Verifications {
             String actualUrl = driver.getCurrentUrl().trim();
             String expected = expectedUrl.trim();
 
-            System.out.println("Verifying URL match:");
+            System.out.println("🔍 Verifying URL match:");
             System.out.println("Expected: " + expected);
             System.out.println("Actual  : " + actualUrl);
 
-            sa.assertEquals(actualUrl, expected, "URL does not match!");
+            sa.assertEquals(actualUrl, expected, "❌ URL does not match!");
             System.out.println("URL matched successfully.");
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -189,6 +159,8 @@ public class All_Verifications {
         }
     }
 
+    
+    
     public static boolean verifyAlertIsPresentMoveToAlert(WebDriver driver, SoftAssert sa) 
     {
         boolean alertResult = false;
@@ -212,3 +184,27 @@ public class All_Verifications {
         return alertResult;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
