@@ -38,8 +38,10 @@
 package verification_methods;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -100,9 +102,6 @@ public class All_Verifications {
         }
     }
 
-    
-    
-    
     public static void clickIfVisibleAndEnabled(WebElement element, WebDriver driver, SoftAssert sa, String elementName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         try {
@@ -169,6 +168,32 @@ public class All_Verifications {
             sa.fail("Exception during text presence check: " + expectedText);
         }
     }
+    
+    public static void verifyTextPresentCaseSensitive(WebElement element, String expectedText, WebDriver driver, SoftAssert sa) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            wait.until(ExpectedConditions.textToBePresentInElement(element, expectedText)); // Partial check, not strict
+
+            String actualText = element.getText();
+
+            if (actualText.equals(expectedText)) { // Full strict case-sensitive check
+                System.out.println("Text found (case-sensitive): '" + expectedText + "'");
+                sa.assertTrue(true, "Text is present (case-sensitive): " + expectedText);
+            } else {
+                System.out.println("Text mismatch. Expected: '" + expectedText + "', Found: '" + actualText + "'");
+                TakeScreenshot.getScreenshot(driver);
+                sa.fail("Expected text not found (case-sensitive). Found: '" + actualText + "'");
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Exception while verifying text: '" + expectedText + "'");
+            ex.printStackTrace();
+            TakeScreenshot.getScreenshot(driver);
+            sa.fail("Exception during text presence check (case-sensitive): " + expectedText);
+        }
+    }
+
 
 
     public static void verifyTextNotPresent(String unexpectedText, WebDriver driver, SoftAssert sa) {
@@ -211,4 +236,101 @@ public class All_Verifications {
         }
         return alertResult;
     }
+    
+    public static void verifyCartItemCount(WebDriver driver, By locator, int expectedCount, SoftAssert sa) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	try {
+            
+            wait.until(ExpectedConditions.numberOfElementsToBe(locator, expectedCount));
+
+            int actual = driver.findElements(locator).size();
+            System.out.println("Cart has expected item count: " + actual);
+            sa.assertEquals(actual, expectedCount, "Cart item count mismatch.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            TakeScreenshot.getScreenshot(driver);
+            sa.fail("Cart did not reach expected count: " + expectedCount);
+        }
+    }
+    
+    
+    public static void verifyElementCount(WebDriver driver, By locator, int expectedCount, SoftAssert sa) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        try {
+            
+            wait.until(ExpectedConditions.numberOfElementsToBe(locator, expectedCount));
+
+            int actual = driver.findElements(locator).size();
+            System.out.println("Found " + actual + " elements for locator: " + locator);
+            sa.assertEquals(actual, expectedCount, "Element count mismatch for locator: " + locator);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            TakeScreenshot.getScreenshot(driver);
+            sa.fail("Expected " + expectedCount + " elements, but check failed for locator: " + locator);
+        }
+    }
+
+    
+    public static void verifyAndTypeInputField(WebDriver driver, WebElement inputField, String textToType, String fieldName, SoftAssert sa) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        try {
+            // Step 1: Visibility
+            wait.until(ExpectedConditions.visibilityOf(inputField));
+            sa.assertTrue(inputField.isDisplayed(), fieldName + " is visible");
+
+            // Step 2: Enabled (interactable)
+            sa.assertTrue(inputField.isEnabled(), fieldName + " is enabled");
+
+            // Step 3: Clear existing value (optional)
+            inputField.clear();
+
+            // Step 4: Type text
+            inputField.sendKeys(textToType);
+
+            // Step 5: Verification (value typed successfully)
+            String typedValue = inputField.getAttribute("value");
+            sa.assertEquals(typedValue, textToType, fieldName + " value verification after typing");
+
+            // Step 6: Log success
+            System.out.println("✅ Typed '" + textToType + "' into " + fieldName + " successfully.");
+
+        } catch (Exception ex) {
+            System.out.println("❌ Failed to type into " + fieldName + ": " + ex.getMessage());
+            ex.printStackTrace();
+            TakeScreenshot.getScreenshot(driver);
+            sa.fail("Failed to type into " + fieldName + ": " + ex.getMessage());
+        }
+    }
+
+    
+    
+    public static void verifyElementInvisibility(WebDriver driver, By locator, SoftAssert sa) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+            System.out.println("✅ Element is now invisible or removed: " + locator);
+            sa.assertTrue(true, "Element is invisible as expected: " + locator);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            TakeScreenshot.getScreenshot(driver);
+            sa.fail("❌ Element is still visible or not removed: " + locator);
+        }
+    }
+    
+    
+    
+    public static void verifyAllElementsInvisibility(WebDriver driver, List<WebElement> elements, SoftAssert sa) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        try {
+            wait.until(ExpectedConditions.invisibilityOfAllElements(elements));
+            System.out.println("✅ All elements are now invisible or removed.");
+            sa.assertTrue(true, "All elements are invisible as expected.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            TakeScreenshot.getScreenshot(driver);
+            sa.fail("❌ Some elements are still visible or not removed.");
+        }
+    }
+    
+    
 }
