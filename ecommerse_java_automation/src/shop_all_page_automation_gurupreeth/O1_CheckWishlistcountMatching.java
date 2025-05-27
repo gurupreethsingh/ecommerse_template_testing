@@ -34,6 +34,7 @@ public class O1_CheckWishlistcountMatching {
 
             // === Verify Homepage Title ===
             All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
+            
 
             // === Locate signin Link ===
           //  WebElement signinLink = driver.findElement(By.xpath("//a[@href='/login']/span"));
