@@ -18,9 +18,6 @@ logs/
 # Ignore test output folders
 test-output/
 
-# Ignore Excel files
-*.xls
-*.xlsx
 
 # Ignore screenshot/image folders
 failed_screenshots/

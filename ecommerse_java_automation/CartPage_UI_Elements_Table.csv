@@ -1,5 +1,9 @@
+cart page,title,url,
+,Cart | ECODERS,http://localhost:5173/cart,
+,,,
+,,,
 Element,XPath,CSS Selector,Description
-Page Title,"//h1[contains(text(),'Your Cart')]",h1.text-3xl,Main heading 'Your Cart'
+Page Title,"//h1[contains(text(),'Your Cart')]",div>h1.text-3xl,Main heading 'Your Cart'
 Cart Spinner Icon,"//div[contains(@class,'h-[60vh]')]//svg",.animate-spin-slow,Spinning icon while loading cart
 Cart Spinner Text,"//p[contains(text(),'Loading your cart...')]",p.text-gray-600,Text shown during loading state
 Empty Cart Image,"//img[contains(@alt,'Empty Cart')]",img.mx-auto,Image shown when cart is empty

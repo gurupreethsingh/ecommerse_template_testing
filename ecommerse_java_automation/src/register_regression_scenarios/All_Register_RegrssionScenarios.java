@@ -3,7 +3,6 @@ package register_regression_scenarios;
 import java.io.IOException;
 import java.time.Duration;
 
-import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -58,7 +57,7 @@ public class All_Register_RegrssionScenarios implements AutomationConstants
 	}
 	
 	@Test(enabled = false)
-	public void runAllInvalidEmail() throws EncryptedDocumentException, IOException, InterruptedException
+	public void runAllInvalidEmail() throws  IOException, InterruptedException
 	{
 		for ( int i = 0; i<= 20; i++)
 		{
