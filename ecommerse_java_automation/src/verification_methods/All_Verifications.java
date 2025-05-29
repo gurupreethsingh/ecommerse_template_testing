@@ -102,6 +102,34 @@ public class All_Verifications {
         }
     }
 
+    
+    
+    public static void verifyIfElementVisibleAndEnabled(WebElement element, WebDriver driver, SoftAssert sa, String elementName) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        try {
+            // Wait until element is visible
+            wait.until(ExpectedConditions.visibilityOf(element));
+            // Wait until element is clickable
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+
+            if (element.isDisplayed() && element.isEnabled()) 
+            {
+                sa.assertTrue(true, "Element is displayed and Enabled: " + elementName);
+        
+            } else {
+                System.out.println("Element not enabled and displayed: " + elementName);
+                TakeScreenshot.getScreenshot(driver);
+                sa.fail("Element is either not visible or not enabled: " + elementName);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Exception while checking on element: " + elementName);
+            TakeScreenshot.getScreenshot(driver);
+            sa.fail("Exception occurred while checking for visibility and enabled.: " + elementName);
+        }
+    }
+    
+    
     public static void clickIfVisibleAndEnabled(WebElement element, WebDriver driver, SoftAssert sa, String elementName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         try {
@@ -270,6 +298,25 @@ public class All_Verifications {
         }
     }
 
+    
+    // Compares actual and expected count and logs result
+    public static void verifyCountMatch(int expectedCount, int actualCount, WebDriver driver, SoftAssert sa) {
+        try {
+            if (actualCount == expectedCount) {
+                System.out.println("Count matched: Expected = " + expectedCount + ", Actual = " + actualCount);
+                sa.assertTrue(true, "Count matched successfully.");
+            } else {
+                System.out.println("❌ Count mismatch: Expected = " + expectedCount + ", Actual = " + actualCount);
+                TakeScreenshot.getScreenshot(driver);
+                sa.fail("Count mismatch! Expected: " + expectedCount + ", but got: " + actualCount);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Exception during count verification.");
+            TakeScreenshot.getScreenshot(driver);
+            sa.fail("Exception during count check. Expected: " + expectedCount + ", Actual: " + actualCount);
+        }
+    }
     
     public static void verifyAndTypeInputField(WebDriver driver, WebElement inputField, String textToType, String fieldName, SoftAssert sa) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
