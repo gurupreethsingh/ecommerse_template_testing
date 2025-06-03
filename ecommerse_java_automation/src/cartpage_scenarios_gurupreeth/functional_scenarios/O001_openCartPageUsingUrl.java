@@ -13,11 +13,11 @@ import verification_methods.All_Verifications;
 
 public class O001_openCartPageUsingUrl {
 
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
        WebDriver driver = null ;
        SoftAssert sa  = new SoftAssert();
-       
+
        try
        {
            driver = new ChromeDriver();
@@ -36,10 +36,10 @@ public class O001_openCartPageUsingUrl {
            String expectedCartpageUrl = "http://localhost:5173/cart";
            All_Verifications.verifyTitleMatch(expectedCartpageTitle, driver, sa);
            All_Verifications.verifyUrleMatch(expectedCartpageUrl, driver, sa);
-           
+
            WebElement cartHeading = driver.findElement(By.cssSelector("div>h1.text-3xl"));
            String actualCartHeadingText = cartHeading.getText();
-           
+
            All_Verifications.verifyTextPresent("Your Cart" , driver, sa);
        }
        catch(Exception ex)

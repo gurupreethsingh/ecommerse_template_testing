@@ -1,8 +1,8 @@
 package homepage_java_automation;
 
 import java.time.Duration;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,7 +35,7 @@ public class O5_VerifyCategoryHeading {
 
             String exptectedText = "Explore Our Categories";
             System.out.println("Acutal heading" + categoryHading.getText());
-            
+
             try
             {
             	 wait.until(ExpectedConditions.textToBe(By.xpath("//div[@class='flex justify-between items-center mb-6']/h2"), exptectedText));
@@ -45,11 +45,11 @@ public class O5_VerifyCategoryHeading {
             {
             	ex.printStackTrace();
             	System.out.println("Text is not matching.");
-            	// screen shot code. 
+            	// screen shot code.
             	TakeScreenshot.getScreenshot(driver);
             }
-           
-            
+
+
 
         } catch (Exception ex) {
             ex.printStackTrace();

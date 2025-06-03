@@ -18,44 +18,44 @@ import excel_automation.O3_ReadFromExcel;
 public class All_Register_RegrssionScenarios implements AutomationConstants
 {
 	WebDriver driver = null;
-	
+
 	@BeforeMethod
 	public void openApplication()
 	{
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
-		
+
 		driver.get(urlOfRegister);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		
+
 		System.out.println(driver.getTitle());
-		
+
 		System.out.println(driver.getCurrentUrl());
 	}
-	
+
 	@Test(priority = 1, invocationCount = 1)
 	public void runClickOnLogo()
 	{
 			WebElement logo = driver.findElement(By.xpath("//a[text()='LOGO']"));
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			logo.click();
-			
+
 			System.out.println("Actual title :" + driver.getTitle());
 			System.out.println("Actual url :" + driver.getCurrentUrl());
 	}
-	
+
 	@Test(priority = 2)
 	public void runClickOnLogin()
 	{
 			WebElement logo = driver.findElement(By.xpath("//a[text()='Login']"));
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			logo.click();
-			
+
 			System.out.println("Actual title :" + driver.getTitle());
 			System.out.println("Actual url :" + driver.getCurrentUrl());
 	}
-	
+
 	@Test(enabled = false)
 	public void runAllInvalidEmail() throws  IOException, InterruptedException
 	{
@@ -64,22 +64,22 @@ public class All_Register_RegrssionScenarios implements AutomationConstants
 		WebElement nameField = driver.findElement(By.id("name"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		nameField.sendKeys("Person1");
-		
+
 			WebElement emailField = driver.findElement(By.id("email"));
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			
+
 			 String wrongEmails = O3_ReadFromExcel.getData("Sheet1", i, 0);
 			emailField.sendKeys(wrongEmails);
-		
+
 		WebElement passwordField = driver.findElement(By.id("password"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		passwordField.sendKeys("Person1");
-		
+
 		WebElement registerButton = driver.findElement(By.xpath("//button[@type='submit']"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		registerButton.click();
-		
-		
+
+
 		try {
 		    WebElement errorMessage = driver.findElement(By.xpath("//p[@class='errorText mb-4']"));
 		    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -87,7 +87,7 @@ public class All_Register_RegrssionScenarios implements AutomationConstants
 		} catch (Exception e) {
 		    System.out.println("No error message displayed, moving to next scenario...");
 		}
-		
+
 		Thread.sleep(500);
 		// Clear using key simulation instead of clear()
 		WebElement nameFieldClear = driver.findElement(By.id("name"));
@@ -103,12 +103,12 @@ public class All_Register_RegrssionScenarios implements AutomationConstants
 		passwordFieldClear.sendKeys(Keys.DELETE);
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		
+
 		String expectedTitle = "Register | ECODERS";
-		
+
 		System.out.println("Actual title :" + driver.getTitle());
 		System.out.println("Actual url :" + driver.getCurrentUrl());
-		
+
 		if(expectedTitle.equals(driver.getTitle())){
 			System.out.println("Tc Pass");
 		}
@@ -116,10 +116,10 @@ public class All_Register_RegrssionScenarios implements AutomationConstants
 		{
 			System.out.println("Falied");
 		}
-		
+
 		}
 	}
-	
+
 	@AfterMethod
 	public void closeApplication()
 	{

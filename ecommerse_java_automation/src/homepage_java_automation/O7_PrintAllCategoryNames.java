@@ -4,7 +4,6 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,39 +27,39 @@ public class O7_PrintAllCategoryNames {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.titleContains("Home"));
 
-           
+
             try
             {
             	List<WebElement>  allcategories = driver.findElements(By.xpath("//div[@id='categoryCarousel']/div"));
-            	
+
             	int count = allcategories.size();
-            	int expectedCount = 10; 
-            	
+            	int expectedCount = 10;
+
             	if(count == expectedCount)
             	{
             		System.out.println("count is matching, Text case pass. ");
             		System.out.println("total category counts is " + count);
             	}
-            	
-            	int index = 1; 
+
+            	int index = 1;
             	for(WebElement eachCategory : allcategories)
             	{
             		System.out.println(index + " " + eachCategory.getText());
             		Thread.sleep(300);
             		index++;
             	}
-            	
-            	
+
+
             }
             catch(Exception ex)
             {
             	ex.printStackTrace();
             	System.out.println("Count is wrong");
-            	// screen shot code. 
+            	// screen shot code.
             	TakeScreenshot.getScreenshot(driver);
             }
-           
-            
+
+
 
         } catch (Exception ex) {
             ex.printStackTrace();

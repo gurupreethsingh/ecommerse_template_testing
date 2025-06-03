@@ -6,7 +6,6 @@ import java.util.function.Function;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.testng.annotations.Test;
 
 import screenshots.TakeScreenshot;
 
@@ -32,17 +31,18 @@ public class OpenHomepageUsingUrl_usingFluentWait {
                     .ignoring(Exception.class);  // You can also add specific ignored exceptions
 
             try {
-                wait.until(new Function<WebDriver, Boolean>() 
+                wait.until(new Function<WebDriver, Boolean>()
                 {
-                    public Boolean apply(WebDriver driver) 
+                    @Override
+					public Boolean apply(WebDriver driver)
                     {
                         return driver.getTitle().equals(expectedTitle);
                     }
                 });
 
                 System.out.println("title matched.");
-            } 
-            catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 System.out.println("Title did not match.");
                 TakeScreenshot.getScreenshot(driver);

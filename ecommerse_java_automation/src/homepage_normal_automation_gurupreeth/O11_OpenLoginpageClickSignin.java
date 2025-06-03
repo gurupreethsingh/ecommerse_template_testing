@@ -37,7 +37,7 @@ public class O11_OpenLoginpageClickSignin {
             // === Locate signin Link ===
           //  WebElement signinLink = driver.findElement(By.xpath("//a[@href='/login']/span"));
             WebElement signinLink = driver.findElement(By.cssSelector("a[href='/login'] > span"));
-            
+
             System.out.println("Actaul text in sign in link " + signinLink.getText());
             // === Click on ECOMMERSE Link if ready ===
             All_Verifications.clickIfVisibleAndEnabled(signinLink, driver, sa, "signinLink");

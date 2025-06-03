@@ -14,7 +14,7 @@ import screenshots.TakeScreenshot;
 
 public class O03_openDashboardpageUsingDashboardLinkFromAboutpageHeader {
 
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 			WebDriver driver=null;
 			try
@@ -36,28 +36,28 @@ public class O03_openDashboardpageUsingDashboardLinkFromAboutpageHeader {
 				Alert alert = driver.switchTo().alert();
 				alert.accept();
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-				
+
 				String expectedTitle = "SuperAdmin Dashboard | ECODERS";
-			    String actualTitle=driver.getTitle(); 
+			    String actualTitle=driver.getTitle();
 			    System.out.println("Actual Dashboard title is " + actualTitle);
-				
+
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 				try {
 				    wait.until(ExpectedConditions.titleIs(expectedTitle));
 				    System.out.println("Test case passed, Title matched");
-				    
+
 				    driver.navigate().to("http://localhost:5173/about-us");
-				    
-				    // find the about us link, from header. 
+
+				    // find the about us link, from header.
 				    WebElement dashboardLink = driver.findElement(By.xpath("//a[@href='/superadmin-dashboard']"));
 				    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 				    dashboardLink.click();
 				    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-				    
+
 				    String expectedAboutTitle = "SuperAdmin Dashboard | ECODERS";
 				    String actualPageTitle = driver.getTitle();
 				    System.out.println("Actual title of page is " + actualPageTitle);
-				    
+
 				    try
 				    {
 				    	wait.until(ExpectedConditions.titleIs(expectedAboutTitle));
@@ -69,14 +69,14 @@ public class O03_openDashboardpageUsingDashboardLinkFromAboutpageHeader {
 					    TakeScreenshot.getScreenshot(driver);
 					    System.out.println("Testcase failed screenshot stored.");
 				    }
-				    
-				    
+
+
 				} catch (Exception ex) {
 				    // Clean handling — no stack trace
 				    System.out.println("Test failed: Expected Title did not match. Screenshot captured.");
 				    TakeScreenshot.getScreenshot(driver);
 				    System.out.println("Testcase failed screenshot stored.");
-				    
+
 				}
 			}
 			catch(Exception ex)

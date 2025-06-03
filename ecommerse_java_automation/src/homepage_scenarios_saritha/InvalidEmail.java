@@ -12,9 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import automation_scripts.AutomationConstants;
 import screenshots.TakeScreenshot;
 
-public class InvalidEmail implements AutomationConstants 
+public class InvalidEmail implements AutomationConstants
 {
-	public static void main(String[] args) throws InterruptedException 
+	public static void main(String[] args) throws InterruptedException
 	{
 		WebDriver driver = null;
 		try {
@@ -34,14 +34,14 @@ public class InvalidEmail implements AutomationConstants
 			// Wait until the login link is visible and then click
 			WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='email']")));
 			emailField.sendKeys("saritha@gmail.com");
-			
-			
+
+
 			WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='password']")));
 			passwordField.sendKeys("sfgdsfgdfsgdsfgsdfgdfsgdfsg");
-			
+
 			WebElement signInButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit']")));
 			signInButton.click();
-			
+
 			// actual title and url of the opened page.
 			System.out.println("Actual title of login page :" + driver.getTitle());
 			System.out.println("Actual url of login page :" + driver.getCurrentUrl());

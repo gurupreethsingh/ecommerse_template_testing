@@ -1,6 +1,7 @@
 package homepage_normal_automation_gurupreeth;
 
 import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.asserts.SoftAssert;
@@ -30,7 +31,7 @@ public class O2_OpenHomepageUsingUrlHome {
 
             // Verify Title
             All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-            
+
             All_Verifications.verifyUrleMatch(expectedUrl, driver, sa);
 
         } catch (Exception ex) {

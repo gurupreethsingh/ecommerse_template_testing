@@ -13,11 +13,11 @@ import verification_methods.All_Verifications;
 
 public class O002_clickCArtIconOpenMinicart {
 
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
        WebDriver driver = null ;
        SoftAssert sa  = new SoftAssert();
-       
+
        try
        {
            driver = new ChromeDriver();
@@ -33,22 +33,22 @@ public class O002_clickCArtIconOpenMinicart {
            System.out.println("Navigated to: " + cartpageUrl);
 
            All_Verifications.verifyTitleMatch(expectedCartpageTitle, driver, sa);
-           
+
            // click on cart icon and open minicart.
            WebElement cartIcon = driver.findElement(By.cssSelector("button.relative"));
            All_Verifications.clickIfVisibleAndEnabled(cartIcon, driver, sa, "Cart Icon");
-           
+
            WebElement cartSummary = driver.findElement(By.cssSelector("div.absolute>h2"));
            String actualCartSummeryText = cartSummary.getText();
            System.out.println("Actual text : " + actualCartSummeryText);
-           
+
            All_Verifications.verifyTextPresent("Cart Summary" , driver, sa);
-           
+
            WebElement cartEmptyMessage = driver.findElement(By.cssSelector("div.absolute>div>p"));
            String cartEmptyMessageText = cartEmptyMessage.getText();
            System.out.println("Actual text : " + cartEmptyMessageText);
            All_Verifications.verifyTextPresent("Your cart is empty!" , driver, sa);
-           
+
        }
        catch(Exception ex)
        {

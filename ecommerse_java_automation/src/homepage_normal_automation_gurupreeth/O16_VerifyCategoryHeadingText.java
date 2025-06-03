@@ -33,15 +33,15 @@ public class O16_VerifyCategoryHeadingText {
 
             // === Verify Homepage Title ===
             All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-            
+
             WebElement heading = driver.findElement(By.xpath("//section[@class='py-10 px-4 bg-white']/div[1]/h2"));
             //WebElement heading = driver.findElement(By.cssSelector("section.py-10.px-4.bg-white > div:nth-of-type(1) > h2"));
             String actualHeadingText = heading.getText().trim();
             String expectedHeading = "Explore Our Categories";
-            
+
             System.out.println("Expected Heading: " + expectedHeading);
             System.out.println("Actual Heading:   " + actualHeadingText);
-            
+
             All_Verifications.verifyTextPresent(expectedHeading, driver, sa);
 
         } catch (Exception ex) {

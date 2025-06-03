@@ -33,7 +33,7 @@ public class O2_OpenLoginPageClickLoginLink implements AutomationConstants {
 			// Wait until the login link is visible and then click
 			WebElement loginLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href='/login']")));
 			loginLink.click();
-			
+
 			// actual title and url of the opened page.
 			System.out.println("Actual title of login page :" + driver.getTitle());
 			System.out.println("Actual url of login page :" + driver.getCurrentUrl());

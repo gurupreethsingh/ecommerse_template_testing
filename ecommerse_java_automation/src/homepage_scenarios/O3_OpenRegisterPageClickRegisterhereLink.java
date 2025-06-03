@@ -32,7 +32,7 @@ public class O3_OpenRegisterPageClickRegisterhereLink implements AutomationConst
 			// Wait until the login link is visible and then click
 			WebElement registerHereLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href='/register']")));
 			registerHereLink.click();
-			
+
 			// actual title and url of the opened page.
 			System.out.println("Actual title of login page :" + driver.getTitle());
 			System.out.println("Actual url of login page :" + driver.getCurrentUrl());

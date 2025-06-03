@@ -4,7 +4,6 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,15 +34,15 @@ public class O20_FindAllBrandNames {
 
             // Verify Title
             All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-            
+
             All_Verifications.verifyUrleMatch(expectedUrl, driver, sa);
-            
-            // find all the images. from hero section. and print the name of all the images. 
+
+            // find all the images. from hero section. and print the name of all the images.
             List<WebElement> allCategoryNames = driver.findElements(By.cssSelector("section.py-10.px-4.bg-gray-50 > div > div"));
 //            List<WebElement> allSlides = driver.findElements(By.xpath("//section[@class='py-10 px-4 bg-white']/div[2]/div/div"));
 
             	System.out.println("Total categories: " + allCategoryNames.size());
-              
+
             	for (WebElement eachCategory : allCategoryNames) {
             	    System.out.println(eachCategory.getText());
             	    Thread.sleep(300);

@@ -4,12 +4,14 @@ import java.time.Duration;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.asserts.SoftAssert;
+
 import excel_automation.O3_ReadFromExcel;
 import verification_methods.All_Verifications;
 
@@ -38,9 +40,9 @@ public class O24_ClickEachProduct {
 
             for (int i = 0; i < allProducts.size(); i++) {
                 List<WebElement> productList = driver.findElements(By.xpath("//section[@class='mt-16 mb-16 relative']/div[2]/div/div"));
-                
+
                 WebElement product = productList.get(i);
-                String productText = product.getText().split("\n")[0].trim(); 
+                String productText = product.getText().split("\n")[0].trim();
                 System.out.println("\n Clicking product: " + productText);
 
                 // Scroll into view and force click via JS

@@ -34,14 +34,14 @@ public class O12_FindAllImageNamesFromHeroSection {
 
             // Verify Title
             All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-            
+
             All_Verifications.verifyUrleMatch(expectedUrl, driver, sa);
-            
-            // find all the images. from hero section. and print the name of all the images. 
+
+            // find all the images. from hero section. and print the name of all the images.
             List<WebElement> allImages = driver.findElements(By.xpath("//div[@id='carouselExampleDark']/div[1]/div/img"));
-            
+
             System.out.println("Tatol Sliders and images are : "+ allImages.size());
-            
+
             for(WebElement eachImage : allImages)
             {
             	String imageName = eachImage.getAttribute("src");

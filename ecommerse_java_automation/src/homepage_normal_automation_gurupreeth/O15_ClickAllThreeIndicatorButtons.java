@@ -1,10 +1,8 @@
 package homepage_normal_automation_gurupreeth;
 
 import java.time.Duration;
-import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,10 +34,10 @@ public class O15_ClickAllThreeIndicatorButtons {
 
             // Verify Title
             All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-            
+
             All_Verifications.verifyUrleMatch(expectedUrl, driver, sa);
-            
-            // find the shop now button which is active then click on it. 
+
+            // find the shop now button which is active then click on it.
             for(int i =1 ; i <= 3; i++)
             {
                 WebElement indicatorButtons  = driver.findElement(By.xpath("//div[@class='carousel-indicators']/button["+i+"]"));

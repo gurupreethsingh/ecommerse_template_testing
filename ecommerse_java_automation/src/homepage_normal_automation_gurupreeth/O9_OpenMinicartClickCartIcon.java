@@ -41,7 +41,7 @@ public class O9_OpenMinicartClickCartIcon {
             // === Click on ECOMMERSE Link if ready ===
             All_Verifications.clickIfVisibleAndEnabled(cartIcon, driver, sa, "cartIcon");
 
-// take screenshot to see if the minicart is open or not. 
+// take screenshot to see if the minicart is open or not.
             TakeScreenshot.getScreenshot(driver);
 
         } catch (Exception ex) {

@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.asserts.SoftAssert;
 
 import excel_automation.O3_ReadFromExcel;
-import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import verification_methods.All_Verifications;
 
 public class O012_ClickOnEachProductVerifyEachProductName {
@@ -43,9 +42,9 @@ public class O012_ClickOnEachProductVerifyEachProductName {
                         "div[style='opacity: 1; transform: none;']>div.grid>div.relative:nth-of-type(" + i + ")>div>h3"));
                 String productName = productNameElement.getText();
                 System.out.println(i + ". Clicking on product : " + productName);
-                
+
                 String expectedProductName = productName;
-                
+
 
                 // Scroll product into center view
                 js.executeScript("arguments[0].scrollIntoView({block: 'center'});", productNameElement);
@@ -68,7 +67,7 @@ public class O012_ClickOnEachProductVerifyEachProductName {
                 All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
                 System.out.println("✅ Successfully clicked and verified product: " + productName);
-                
+
                 WebElement singleProductname = driver.findElement(By.cssSelector("div.w-full>h1.text-4xl"));
                 String actualProductName = singleProductname.getText();
                  System.out.println("Actual product found in page : "+ actualProductName);
@@ -83,7 +82,9 @@ public class O012_ClickOnEachProductVerifyEachProductName {
             ex.printStackTrace();
         } finally {
             Thread.sleep(2000);
-            if (driver != null) driver.quit();
+            if (driver != null) {
+				driver.quit();
+			}
         }
     }
 }

@@ -33,15 +33,15 @@ public class O22_VerifyProductHeading {
 
             // === Verify Homepage Title ===
             All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-            
+
            WebElement heading = driver.findElement(By.xpath("//section[@class='mt-16 mb-16 relative']/div[1]/h2"));
  //           WebElement heading = driver.findElement(By.cssSelector("section.py-10.px-4.bg-gray-50 > h2"));
             String actualHeadingText = heading.getText().trim();
             String expectedHeading = "Explore Products from Popular Brands";
-            
+
             System.out.println("Expected Heading: " + expectedHeading);
             System.out.println("Actual Heading:   " + actualHeadingText);
-            
+
             All_Verifications.verifyTextPresent(expectedHeading, driver, sa);
 
         } catch (Exception ex) {

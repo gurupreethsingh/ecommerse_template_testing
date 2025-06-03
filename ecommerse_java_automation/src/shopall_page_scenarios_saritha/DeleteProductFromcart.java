@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.asserts.SoftAssert;
 
 import excel_automation.O3_ReadFromExcel;
-import verification_methods.All_Verifications;
 
 public class DeleteProductFromcart {
 
@@ -32,30 +31,30 @@ public class DeleteProductFromcart {
             driver.get(websiteUrl);
             System.out.println("Navigated to: " + websiteUrl);
             WebElement signinLink = driver.findElement(By.cssSelector("a[href='/login'] > span"));
-            
+
             signinLink .click();
             WebElement emailField =  driver.findElement(By.cssSelector("form.space-y-6>div:first-child>input"));
             emailField.sendKeys("ecoders@gmail.com");
-            
+
             WebElement passwordField =  driver.findElement(By.cssSelector("form.space-y-6>div.relative>input"));
             passwordField.sendKeys("abc123ABC!@#");
-            
+
             WebElement loginButton =  driver.findElement(By.cssSelector("button.w-full.py-2.px-4"));
-         
+
             loginButton.click();
-            
-            // click on shop all page. 
+
+            // click on shop all page.
             WebElement shopLink = driver.findElement(By.cssSelector("a[href='/shop']"));
             shopLink.click();
             WebElement cart= driver.findElement(By.xpath("//button[@class='relative p-2 rounded-full']"));
             cart.click();
             Thread.sleep(2000);
             System.out.println(driver.getTitle());
-            
+
 		}
 		catch(Exception ex)
 		{
-			ex.printStackTrace();		
+			ex.printStackTrace();
 		}
 		finally
 		{

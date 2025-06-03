@@ -1,8 +1,9 @@
 package database_testing.shopall_page;
 
-import com.mongodb.client.*;
-import org.bson.Document;
 import java.util.Scanner;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 
 public class O002_Database_Regression_Shoppage {
     public static void main(String[] args) {

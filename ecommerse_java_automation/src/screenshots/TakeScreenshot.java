@@ -12,7 +12,7 @@ import org.openqa.selenium.io.FileHandler;
 import automation_scripts.AutomationConstants;
 
 public class TakeScreenshot implements AutomationConstants {
-    
+
     public static void getScreenshot(WebDriver driver) {
         try {
             // Take screenshot
@@ -33,7 +33,7 @@ public class TakeScreenshot implements AutomationConstants {
 
             // Copy screenshot to destination
             FileHandler.copy(srcFile, destFile);
-            
+
             System.out.println("Screenshot saved to: " + destFile.getAbsolutePath());
 
         } catch (Exception ex) {

@@ -1,10 +1,8 @@
 package homepage_normal_automation_gurupreeth;
 
 import java.time.Duration;
-import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,14 +33,14 @@ public class O14_ClickShopnowFromHeroSectionOpenShoppage {
 
             // Verify Title
             All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-            
+
             All_Verifications.verifyUrleMatch(expectedUrl, driver, sa);
-            
-            // find the shop now button which is active then click on it. 
+
+            // find the shop now button which is active then click on it.
             WebElement shopNowButton  = driver.findElement(By.xpath("//div[contains(@class,'carousel-item') and contains(@class,'active')]//a[@href='/shop']"));
             // use the verfication method to click on the shop now button
             All_Verifications.clickIfVisibleAndEnabled(shopNowButton, driver, sa, "Shop now");
-            
+
             // now verifiy the title and url of the shop page.
             String expectedShopTitle = O3_ReadFromExcel.getData("Shoppage", 1, 1);
             String expectedShopUrl = O3_ReadFromExcel.getData("Shoppage", 1, 2);

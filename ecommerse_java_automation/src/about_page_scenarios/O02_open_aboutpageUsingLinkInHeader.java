@@ -14,7 +14,7 @@ import screenshots.TakeScreenshot;
 
 public class O02_open_aboutpageUsingLinkInHeader {
 
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 			WebDriver driver=null;
 			try
@@ -36,26 +36,26 @@ public class O02_open_aboutpageUsingLinkInHeader {
 				Alert alert = driver.switchTo().alert();
 				alert.accept();
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-				
+
 				String expectedTitle = "SuperAdmin Dashboard | ECODERS";
-			    String actualTitle=driver.getTitle(); 
+			    String actualTitle=driver.getTitle();
 			    System.out.println("Actual title is " + actualTitle);
-				
+
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 				try {
 				    wait.until(ExpectedConditions.titleIs(expectedTitle));
 				    System.out.println("Test case passed, Title matched");
-				    
-				    // find the about us link, from header. 
+
+				    // find the about us link, from header.
 				    WebElement aboutUsLink = driver.findElement(By.xpath("//a[@href='/about-us']"));
 				    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 				    aboutUsLink.click();
 				    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-				    
+
 				    String expectedAboutTitle = "About Us | ECODERS";
 				    String actualPageTitle = driver.getTitle();
 				    System.out.println("Actual title of page is " + actualPageTitle);
-				    
+
 				    try
 				    {
 				    	wait.until(ExpectedConditions.titleIs(expectedAboutTitle));
@@ -67,14 +67,14 @@ public class O02_open_aboutpageUsingLinkInHeader {
 					    TakeScreenshot.getScreenshot(driver);
 					    System.out.println("Testcase failed screenshot stored.");
 				    }
-				    
-				    
+
+
 				} catch (Exception ex) {
 				    // Clean handling — no stack trace
 				    System.out.println("Test failed: Expected Title did not match. Screenshot captured.");
 				    TakeScreenshot.getScreenshot(driver);
 				    System.out.println("Testcase failed screenshot stored.");
-				    
+
 				}
 			}
 			catch(Exception ex)

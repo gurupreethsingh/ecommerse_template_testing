@@ -37,9 +37,9 @@ public class O9_OpenReturnPolicyPageClickRPFooter implements AutomationConstants
 			WebElement rpLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='Return Policy']")));
 			System.out.println(rpLink.getText());
 			rpLink.click();
-			
+
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			
+
 			// actual title and url of the opened page.
 			System.out.println("Actual title of login page : " + driver.getTitle());
 			System.out.println("Actual url of login page : " + driver.getCurrentUrl());

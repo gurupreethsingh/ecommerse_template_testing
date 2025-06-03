@@ -2,12 +2,7 @@
 
 Before you run this code, make sure you add the following **JAR**:
 
-📦 **JAR needed:** [mongodb-driver-sync](https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync)
-(E.g., `mongodb-driver-sync-4.11.0.jar`)
-
-
-
-package database_testing.shopall_page;
+https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver/3.12.14
 
 import com.mongodb.client.*;
 import org.bson.Document;

@@ -20,63 +20,63 @@
 //	{
 //       WebDriver driver = null;     // selenium qa
 //       SoftAssert sa = new SoftAssert();   // test ng
-//       
+//
 //       try
 //       {
 //    	 // open browser. (chrome)
-//    	   driver= new ChromeDriver(); 
+//    	   driver= new ChromeDriver();
 //    	   driver.manage().window().maximize();
 //    	   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-//    	   
-//    	 // enter the shop page url. 
+//
+//    	 // enter the shop page url.
 //    	   String websiteUrl = O3_ReadFromExcel.getData("Shoppage", 1, 2);
 //    	   driver.get(websiteUrl);
 //    	   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-//    	   
-//    	 // verify the title and url of the shopall page. 
+//
+//    	 // verify the title and url of the shopall page.
 //    	   String actualTitle = driver.getTitle();
 //    	   System.out.println("Actual title found  : " + actualTitle);
 //    	   String actualUrl = driver.getCurrentUrl();
 //    	   System.out.println("Actual Url found  : " + actualUrl);
 //    	   All_Verifications.verifyTitleMatch("Shop | ECODERS", driver, sa);
 //    	   All_Verifications.verifyUrleMatch("http://localhost:5173/shop", driver, sa);
-//    	   
-//    	   // find the parent division which holds all the products. 
+//
+//    	   // find the parent division which holds all the products.
 //
 //          int productCount = driver.findElements(By.cssSelector("div[style='opacity: 1; transform: none;']>div.grid>div.relative")).size();
 //          System.out.println("Total products found : " + productCount);
-//    	  
-//    	  JavascriptExecutor js = (JavascriptExecutor) driver; 
-//    	  
+//
+//    	  JavascriptExecutor js = (JavascriptExecutor) driver;
+//
 //    	  for (int i = 1; i <= productCount; i++)
 //    	  {
-//  
+//
 //    		  WebElement productNameElement = driver.findElement(By.cssSelector(
 //                      "div[style='opacity: 1; transform: none;']>div.grid>div.relative:nth-of-type(" + i + ")>div>h3"));
 //    		  System.out.println("\n****************************************************************\n");
 //                  System.out.println(i+". Clicking on product : " + productNameElement.getText());
-//    		  
+//
 //                  js.executeScript("arguments[0].scrollIntoView({block: 'center'});", productNameElement);
-//    		  
+//
 //                  // Click the product
 //                  WebElement productClickElement = driver.findElement(By.cssSelector(
 //                      "div[style='opacity: 1; transform: none;']>div.grid>div.relative:nth-of-type(" + i + ")"));
 //                  productClickElement.click();
-//                  
-//                  
-//    		  
+//
+//
+//
 //                  Thread.sleep(1000); // short wait for page transition
-//    		   
+//
 //       	   String actualSingleproductTitle = driver.getTitle();
 //       	   System.out.println("Actual title found  : " + actualSingleproductTitle);
 //       	   String actualSingleproductUrl = driver.getCurrentUrl();
 //       	   System.out.println("Actual Url found  : " + actualSingleproductUrl);
 //       	   String expectedSingleproductTitle = O3_ReadFromExcel.getData("SingleProductPage", 1, 1);
 //       	   All_Verifications.verifyTitleMatch(expectedSingleproductTitle, driver, sa);
-//       	   
+//
 //           driver.navigate().back();
 //           Thread.sleep(1000); // wait for shop page to reload
-//  
+//
 //    	  }
 //
 //             }
@@ -84,12 +84,12 @@
 //       {
 //    	   ex.printStackTrace();
 //       }
-//       
+//
 //       finally {
 //    	   Thread.sleep(2000);
 //    	   driver.quit();
 //       }
-//       
+//
 //	}
 //}
 
@@ -114,7 +114,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.asserts.SoftAssert;
 
 import excel_automation.O3_ReadFromExcel;
-import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import verification_methods.All_Verifications;
 
 public class O011_ClickOnEachProductGotosingleProductPage {
@@ -147,9 +146,9 @@ public class O011_ClickOnEachProductGotosingleProductPage {
                         "div[style='opacity: 1; transform: none;']>div.grid>div.relative:nth-of-type(" + i + ")>div>h3"));
                 String productName = productNameElement.getText();
                 System.out.println(i + ". Clicking on product : " + productName);
-                
+
                 String expectedProductName = productName;
-                
+
 
                 // Scroll product into center view
                 js.executeScript("arguments[0].scrollIntoView({block: 'center'});", productNameElement);
@@ -172,7 +171,7 @@ public class O011_ClickOnEachProductGotosingleProductPage {
                 All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
                 System.out.println("✅ Successfully clicked and verified product: " + productName);
-                
+
                 WebElement singleProductname = driver.findElement(By.cssSelector("div.w-full>h1.text-4xl"));
                 String actualProductName = singleProductname.getText();
                  System.out.println("Actual product found in page : "+ actualProductName);
@@ -187,7 +186,9 @@ public class O011_ClickOnEachProductGotosingleProductPage {
             ex.printStackTrace();
         } finally {
             Thread.sleep(2000);
-            if (driver != null) driver.quit();
+            if (driver != null) {
+				driver.quit();
+			}
         }
     }
 }

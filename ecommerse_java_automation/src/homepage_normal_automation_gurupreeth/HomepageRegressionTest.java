@@ -21,7 +21,7 @@ public class HomepageRegressionTest
 {
     WebDriver driver = null;
     SoftAssert sa = new SoftAssert();
-    
+
 	@BeforeMethod
 	public void openApplication()
 	{
@@ -36,43 +36,43 @@ public class HomepageRegressionTest
         driver.get(websiteUrl);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
-	
+
 	@Test(priority = 1, enabled = true, invocationCount = 1)
 	public void testOpenHomepageWithUrl()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         String expectedUrl = O3_ReadFromExcel.getData("Homepage", 1, 2);
         All_Verifications.verifyUrleMatch(expectedUrl, driver, sa);
 	}
-	
+
 	@Test(priority = 2, enabled = true, invocationCount = 1)
 	public void testOpenHomepageWithUrlHome()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         String expectedUrl = O3_ReadFromExcel.getData("Homepage", 1, 2);
         All_Verifications.verifyUrleMatch(expectedUrl, driver, sa);
 	}
-	
+
 	@Test(priority = 3, enabled = true, invocationCount = 1)
 	public void testOpenHomepageWithUrlHomepage()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         String expectedUrl = O3_ReadFromExcel.getData("Homepage", 1, 2);
         All_Verifications.verifyUrleMatch(expectedUrl, driver, sa);
 	}
-	
+
 	@Test(priority = 4, enabled = true, invocationCount = 1)
 	public void testO4_OpenHomepageClickEcommerseLink()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         // === Verify Homepage Title ===
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
@@ -86,13 +86,13 @@ public class HomepageRegressionTest
         System.out.println("Verifying homepage title again after clicking link...");
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 	}
-	
+
 	@Test(priority = 5, enabled = true, invocationCount = 1)
 	public void test_O5_OpenShoppageClickShopAllLink()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         // === Verify Homepage Title ===
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
@@ -109,29 +109,29 @@ public class HomepageRegressionTest
       All_Verifications.verifyTitleMatch(expectedShopTitle, driver, sa);
       All_Verifications.verifyUrleMatch(expectedShopUrl, driver, sa);
 	}
-	
-	
+
+
 	@Test(priority = 6, enabled = true, invocationCount = 1)
 	public void test_O6_OpenSearchpageWithQueryText()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         // === Verify Homepage Title ===
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
         // === Locate search field Link ===
         WebElement searchField = driver.findElement(By.xpath("//form[contains(@class,'max-w-2xl')]/input"));
         //WebElement searchField = driver.findElement(By.cssSelector("form input[type='text']"));
-        
+
         searchField.sendKeys("Peenut laddu");
-        
-        // click on the search icons. 
+
+        // click on the search icons.
         WebElement searchIcon = driver.findElement(By.xpath("(//form//button[@type='submit'])[1]"));
         //WebElement searchIcon = driver.findElement(By.cssSelector("form input[type='text']"));
-        
+
         searchIcon.click();
-         
+
 //        // === Post-click: Verify URL or Title again ===
 //        String expectedSearchpageTitle = O3_ReadFromExcel.getData("Shoppage", 1, 1);
         String expectedSearchpageTitle = "Search-Products | ECODERS";
@@ -140,15 +140,15 @@ public class HomepageRegressionTest
         All_Verifications.verifyTitleMatch(expectedSearchpageTitle, driver, sa);
         All_Verifications.verifyUrleMatch(expectedSearchpageUrl, driver, sa);
 	}
-	
-	
-	
+
+
+
 	@Test(priority = 7, enabled = true, invocationCount = 1)
 	public void test_O7_OpenSearchpageWithAllInputs() throws InterruptedException
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         // === Verify Homepage Title ===
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
@@ -159,7 +159,7 @@ public class HomepageRegressionTest
                 "####", "'; DROP TABLE products;--", "fastentry",
                 "refresh test", "disabled input", "js-injection-test"
             };
-        
+
         for (String input : testInputs) {
             System.out.println("\n=== 🔍 Testing input: '" + input + "' ===");
 
@@ -198,14 +198,14 @@ public class HomepageRegressionTest
             }
         }
 	}
-	
-	
+
+
 	@Test(priority = 8, enabled = true, invocationCount = 1)
 	public void test_O8_OpenWishlistClickWishlisticon()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         // === Verify Homepage Title ===
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
@@ -221,14 +221,14 @@ public class HomepageRegressionTest
       All_Verifications.verifyTitleMatch(expectedwishlistTitle, driver, sa);
       All_Verifications.verifyUrleMatch(expectedwishlistUrl, driver, sa);
 	}
-	
-	
+
+
 	@Test(priority = 9, enabled = true, invocationCount = 1)
 	public void test_O9_OpenMinicartClickCartIcon()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         // === Verify Homepage Title ===
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
@@ -238,17 +238,17 @@ public class HomepageRegressionTest
       // === Click on ECOMMERSE Link if ready ===
       All_Verifications.clickIfVisibleAndEnabled(cartIcon, driver, sa, "cartIcon");
 
-//take screenshot to see if the minicart is open or not. 
+//take screenshot to see if the minicart is open or not.
       TakeScreenshot.getScreenshot(driver);
 	}
-	
-	
+
+
 	@Test(priority = 10, enabled = true, invocationCount = 1)
 	public void test_O10_OpenLoginpageClickUsericon()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         // === Verify Homepage Title ===
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
@@ -264,20 +264,20 @@ public class HomepageRegressionTest
         All_Verifications.verifyTitleMatch(expectedLoginTitle, driver, sa);
         All_Verifications.verifyUrleMatch(expectedLoginUrl, driver, sa);
 	}
-	
-	
+
+
 	@Test(priority = 11, enabled = true, invocationCount = 1)
 	public void test_O11_OpenLoginpageClickSignin()
 	{
         String expectedTitle = O3_ReadFromExcel.getData("Homepage", 1, 1);
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-        
+
         // === Verify Homepage Title ===
         All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
 
         //  WebElement signinLink = driver.findElement(By.xpath("//a[@href='/login']/span"));
         WebElement signinLink = driver.findElement(By.cssSelector("a[href='/login'] > span"));
-        
+
         System.out.println("Actaul text in sign in link " + signinLink.getText());
         // === Click on ECOMMERSE Link if ready ===
         All_Verifications.clickIfVisibleAndEnabled(signinLink, driver, sa, "signinLink");
@@ -288,11 +288,11 @@ public class HomepageRegressionTest
         All_Verifications.verifyTitleMatch(expectedLoginTitle, driver, sa);
         All_Verifications.verifyUrleMatch(expectedLoginUrl, driver, sa);
 	}
-	
-	
+
+
 	@AfterMethod
 	public void closeApplication()
 	{
-		driver.quit(); 
+		driver.quit();
 	}
 }

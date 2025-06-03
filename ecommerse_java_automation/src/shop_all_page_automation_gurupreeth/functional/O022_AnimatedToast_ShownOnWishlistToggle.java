@@ -39,7 +39,7 @@ public class O022_AnimatedToast_ShownOnWishlistToggle {
             String toastText = animatedToast.getText().toLowerCase();
             System.out.println("Animated toast text: " + toastText);
 
-            sa.assertTrue(toastText.contains("added") || toastText.contains("removed"), 
+            sa.assertTrue(toastText.contains("added") || toastText.contains("removed"),
                 "Toast should confirm wishlist action");
 
         } catch (Exception ex) {

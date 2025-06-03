@@ -24,7 +24,7 @@ public class O5_OpenInstagramPageClickInstagramLinkFooter implements AutomationC
 			// open homepage
 			driver.get(urlOfHomepage);
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			
+
 			// Save parent window handle (homepage handle)
 			String parentWindow = driver.getWindowHandle();
 
@@ -33,10 +33,10 @@ public class O5_OpenInstagramPageClickInstagramLinkFooter implements AutomationC
 			// Wait until the login link is visible and then click
 			WebElement iLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href='https://www.instagram.com']")));
 			iLink.click();
-			
+
 			// get all the window handles. after clicking on the fb link.
 			Set<String> allHandles = driver.getWindowHandles();
-			
+
 			// now leaving the parent window
 			for(String eachChildWindow : allHandles)
 			{
@@ -47,7 +47,7 @@ public class O5_OpenInstagramPageClickInstagramLinkFooter implements AutomationC
 				}
 			}
 			wait.until(driver1 -> !driver1.getTitle().isEmpty());
-			
+
 			// actual title and url of the opened page.
 			System.out.println("Actual title of page : " + driver.getTitle());
 			System.out.println("Actual url of  page : " + driver.getCurrentUrl());

@@ -13,7 +13,7 @@ import screenshots.TakeScreenshot;
 
 public class O01_open_aboutpageUsingUrl {
 
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 			WebDriver driver=null;
 			try
@@ -32,27 +32,27 @@ public class O01_open_aboutpageUsingUrl {
 				loginlink.click();
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 				String expectedTitle = "Login | ECODERS";
-			    String actualTitle=driver.getTitle(); 
+			    String actualTitle=driver.getTitle();
 			    System.out.println("Actual title is " + actualTitle);
-				
+
 				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 				try {
 				    wait.until(ExpectedConditions.titleIs(expectedTitle));
 				    System.out.println("Test case passed, Title matched");
-				    
-				    // now use the url of the about page and check if you can navigate to about us page or not. 
+
+				    // now use the url of the about page and check if you can navigate to about us page or not.
 				    driver.navigate().to("http://localhost:5173/about-us");
 				    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 				    String expectedAboutTitle = "About Us | ECODERS";
 				    String actualPageTitle = driver.getTitle();
 				    System.out.println("Actual title of page is" + actualPageTitle);
-				    
+
 				} catch (Exception ex) {
 				    // Clean handling — no stack trace
 				    System.out.println("Test failed: Expected Title did not match. Screenshot captured.");
 				    TakeScreenshot.getScreenshot(driver);
 				    System.out.println("Testcase failed screenshot stored.");
-				    
+
 				}
 			}
 			catch(Exception ex)

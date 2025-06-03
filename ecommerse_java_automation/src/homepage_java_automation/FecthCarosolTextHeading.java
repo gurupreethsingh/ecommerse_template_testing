@@ -1,7 +1,6 @@
 package homepage_java_automation;
 
 import java.time.Duration;
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,7 +32,7 @@ public class FecthCarosolTextHeading {
             for (int i = 1; i <= 3; i++) {
                 // Re-locate all buttons every time to avoid stale element
             	WebElement button = driver.findElement(By.xpath("//div[@class='carousel-indicators']/button[" + i + "]"));
-                
+
                 button.click();
 
                 WebElement heading = driver.findElement(By.xpath("(//div[@class='carousel-caption d-none d-md-block animate__animated animate__fadeInUp']/h5)["+i+"]"));

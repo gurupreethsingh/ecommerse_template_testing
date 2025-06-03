@@ -34,7 +34,7 @@ public class O8_OpenPrivacyPolicyPageClickPPFooter implements AutomationConstant
 			WebElement ppLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='Privacy Policy']")));
 			System.out.println(ppLink.getText());
 			ppLink.click();
-			
+
 			// actual title and url of the opened page.
 			System.out.println("Actual title of login page : " + driver.getTitle());
 			System.out.println("Actual url of login page : " + driver.getCurrentUrl());

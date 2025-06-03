@@ -12,25 +12,25 @@ import screenshots.TakeScreenshot;
 
 public class O1_OpenLoginPageWhenLoggedOutUsingHomelink implements AutomationConstants
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
-		WebDriver driver = null; 
+		WebDriver driver = null;
 		try
 		{
-			// open browser. 
+			// open browser.
 			driver = new ChromeDriver() ;
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			// open homepage 
+			// open homepage
 			driver.get(urlOfHomepage);
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			
-			// expectedTitle 
+
+			// expectedTitle
 			System.out.println("Expected title :" + "Login | ECODERS");
 			System.out.println("Actual title of login page :" + driver.getTitle());
 			System.out.println("Actual url of login page :" + driver.getCurrentUrl());
-			
+
 			String expectedTitle = "Login | ECODER";
-			
+
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			try {
 			    wait.until(ExpectedConditions.titleIs(expectedTitle));

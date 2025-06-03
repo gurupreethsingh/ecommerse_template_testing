@@ -2,12 +2,18 @@
 
 	import java.time.Duration;
 
-	import org.openqa.selenium.*;
-	import org.openqa.selenium.chrome.ChromeDriver;
-	import org.openqa.selenium.support.ui.*;
-	import org.testng.annotations.*;
-	import org.testng.asserts.SoftAssert;
-	import screenshots.TakeScreenshot;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import screenshots.TakeScreenshot;
 
 
 public class AllAboutPageTests_RegressionScenarios {
@@ -56,9 +62,9 @@ public class AllAboutPageTests_RegressionScenarios {
 	        } catch (Exception ex) {
 	            TakeScreenshot.getScreenshot(driver);
 	            softAssert.fail("About page via URL failed to load.");
-	            
+
 	        }
-	        softAssert.assertAll(); 
+	        softAssert.assertAll();
 	    }
 
 	    @Test
@@ -71,9 +77,9 @@ public class AllAboutPageTests_RegressionScenarios {
 	        } catch (Exception ex) {
 	            TakeScreenshot.getScreenshot(driver);
 	            softAssert.fail("About page via header link failed to load.");
-	           
+
 	        }
-	        softAssert.assertAll(); 
+	        softAssert.assertAll();
 	    }
 
 	    @Test
@@ -86,7 +92,7 @@ public class AllAboutPageTests_RegressionScenarios {
 	            System.out.println("Contact page loaded successfully via header link.");
 	        } catch (Exception ex) {
 	            TakeScreenshot.getScreenshot(driver);
-	            softAssert.fail("Contact page via header link failed to load.");  
+	            softAssert.fail("Contact page via header link failed to load.");
 	        }
 	        softAssert.assertAll();
 	    }
@@ -101,9 +107,9 @@ public class AllAboutPageTests_RegressionScenarios {
 	            System.out.println("Dashboard page loaded successfully from About page.");
 	        } catch (Exception ex) {
 	            TakeScreenshot.getScreenshot(driver);
-	            softAssert.fail("Dashboard page from About page failed to load."); 
+	            softAssert.fail("Dashboard page from About page failed to load.");
 	        }
-	        softAssert.assertAll(); 
+	        softAssert.assertAll();
 	    }
 
 	    @Test
@@ -118,7 +124,7 @@ public class AllAboutPageTests_RegressionScenarios {
 	            TakeScreenshot.getScreenshot(driver);
 	            softAssert.fail("Home page from footer link failed to load.");
 	        }
-	        softAssert.assertAll(); 
+	        softAssert.assertAll();
 	    }
 	}
 

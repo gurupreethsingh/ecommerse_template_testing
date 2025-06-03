@@ -1,10 +1,13 @@
 package hms_automation;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.*;
-
 import java.time.Duration;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreateMultipleUsers_Register {
     public static void main(String[] args) {
@@ -55,7 +58,7 @@ public class CreateMultipleUsers_Register {
                 System.out.println("The Actual title of the page is : ");
                 String actualTitle = driver.getTitle();
                 System.out.println(actualTitle);
-                
+
                 try
                 {
                 	wait.until(ExpectedConditions.titleIs(expectedTitle));

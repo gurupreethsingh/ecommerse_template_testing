@@ -12,8 +12,8 @@
 //public class All_Verifications
 //{
 //  public void verifyTitleMatch(String expectedTitle , WebDriver driver, SoftAssert sa)
-//  {   
-//	  // make the object of the WebDriverWait class. 
+//  {
+//	  // make the object of the WebDriverWait class.
 //	  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 //	  try
 //	  {
@@ -25,14 +25,14 @@
 //		  ex.printStackTrace();
 //		  System.out.println("Test case failed, Title did not match.");
 //		  System.out.println("Expected title : "+ expectedTitle + " , But Found : " + driver.getTitle() );
-//		  // take the screenshot. 
+//		  // take the screenshot.
 //		  TakeScreenshot.getScreenshot(driver);;
 //	  }
 //  }
 //}
 
-// till here without the softassert. 
-// now with soft assert code. 
+// till here without the softassert.
+// now with soft assert code.
 
 
 package verification_methods;
@@ -47,6 +47,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
+
 import screenshots.TakeScreenshot;
 
 public class All_Verifications {
@@ -73,8 +74,8 @@ public class All_Verifications {
             sa.fail("Title mismatch or wait timeout. Expected: " + expectedTitle + ", but found: " + actualTitle);
         }
     }
-    
-    
+
+
     public static void verifyUrleMatch(String expectedUrl, WebDriver driver, SoftAssert sa) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         try {
@@ -102,8 +103,8 @@ public class All_Verifications {
         }
     }
 
-    
-    
+
+
     public static void verifyIfElementVisibleAndEnabled(WebElement element, WebDriver driver, SoftAssert sa, String elementName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         try {
@@ -112,10 +113,10 @@ public class All_Verifications {
             // Wait until element is clickable
             wait.until(ExpectedConditions.elementToBeClickable(element));
 
-            if (element.isDisplayed() && element.isEnabled()) 
+            if (element.isDisplayed() && element.isEnabled())
             {
                 sa.assertTrue(true, "Element is displayed and Enabled: " + elementName);
-        
+
             } else {
                 System.out.println("Element not enabled and displayed: " + elementName);
                 TakeScreenshot.getScreenshot(driver);
@@ -128,8 +129,8 @@ public class All_Verifications {
             sa.fail("Exception occurred while checking for visibility and enabled.: " + elementName);
         }
     }
-    
-    
+
+
     public static void clickIfVisibleAndEnabled(WebElement element, WebDriver driver, SoftAssert sa, String elementName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         try {
@@ -155,7 +156,7 @@ public class All_Verifications {
         }
     }
 
-    
+
 //    public static void verifyTextPresent(String expectedText, WebDriver driver, SoftAssert sa) {
 //        try {
 //            if (driver.getPageSource().contains(expectedText)) {
@@ -173,9 +174,9 @@ public class All_Verifications {
 //            sa.fail("Exception during text presence check: " + expectedText);
 //        }
 //    }
-    
-    
-    // if we dont want case sentitive verification for the text is present or not. 
+
+
+    // if we dont want case sentitive verification for the text is present or not.
     public static void verifyTextPresent(String expectedText, WebDriver driver, SoftAssert sa) {
         try {
             String pageSourceLower = driver.getPageSource().toLowerCase();
@@ -196,7 +197,7 @@ public class All_Verifications {
             sa.fail("Exception during text presence check: " + expectedText);
         }
     }
-    
+
     public static void verifyTextPresentCaseSensitive(WebElement element, String expectedText, WebDriver driver, SoftAssert sa) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
@@ -242,11 +243,11 @@ public class All_Verifications {
         }
     }
 
-    public static boolean verifyAlertIsPresentMoveToAlert(WebDriver driver, SoftAssert sa) 
+    public static boolean verifyAlertIsPresentMoveToAlert(WebDriver driver, SoftAssert sa)
     {
         boolean alertResult = false;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        try 
+        try
         {
             wait.until(ExpectedConditions.alertIsPresent());
             System.out.println("[INFO] Alert is present. Switching to alert...");
@@ -255,8 +256,8 @@ public class All_Verifications {
             // ✅ (Optional) You can print alert text if needed
             System.out.println("[INFO] Alert text: " + alert.getText());
             alertResult = true;
-        } 
-        catch (Exception ex) 
+        }
+        catch (Exception ex)
         {
             System.out.println("[WARN] Alert is not present after waiting.");
             TakeScreenshot.getScreenshot(driver);
@@ -264,11 +265,11 @@ public class All_Verifications {
         }
         return alertResult;
     }
-    
+
     public static void verifyCartItemCount(WebDriver driver, By locator, int expectedCount, SoftAssert sa) {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     	try {
-            
+
             wait.until(ExpectedConditions.numberOfElementsToBe(locator, expectedCount));
 
             int actual = driver.findElements(locator).size();
@@ -280,12 +281,12 @@ public class All_Verifications {
             sa.fail("Cart did not reach expected count: " + expectedCount);
         }
     }
-    
-    
+
+
     public static void verifyElementCount(WebDriver driver, By locator, int expectedCount, SoftAssert sa) {
     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
-            
+
             wait.until(ExpectedConditions.numberOfElementsToBe(locator, expectedCount));
 
             int actual = driver.findElements(locator).size();
@@ -298,7 +299,7 @@ public class All_Verifications {
         }
     }
 
-    
+
     // Compares actual and expected count and logs result
     public static void verifyCountMatch(int expectedCount, int actualCount, WebDriver driver, SoftAssert sa) {
         try {
@@ -317,7 +318,7 @@ public class All_Verifications {
             sa.fail("Exception during count check. Expected: " + expectedCount + ", Actual: " + actualCount);
         }
     }
-    
+
     public static void verifyAndTypeInputField(WebDriver driver, WebElement inputField, String textToType, String fieldName, SoftAssert sa) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
@@ -349,8 +350,8 @@ public class All_Verifications {
         }
     }
 
-    
-    
+
+
     public static void verifyElementInvisibility(WebDriver driver, By locator, SoftAssert sa) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
@@ -363,9 +364,9 @@ public class All_Verifications {
             sa.fail("❌ Element is still visible or not removed: " + locator);
         }
     }
-    
-    
-    
+
+
+
     public static void verifyAllElementsInvisibility(WebDriver driver, List<WebElement> elements, SoftAssert sa) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
@@ -378,6 +379,6 @@ public class All_Verifications {
             sa.fail("❌ Some elements are still visible or not removed.");
         }
     }
-    
-    
+
+
 }

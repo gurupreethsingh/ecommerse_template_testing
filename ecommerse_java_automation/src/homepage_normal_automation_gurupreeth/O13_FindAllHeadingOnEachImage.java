@@ -35,10 +35,10 @@ public class O13_FindAllHeadingOnEachImage {
 
             // Verify Title
             All_Verifications.verifyTitleMatch(expectedTitle, driver, sa);
-            
+
             All_Verifications.verifyUrleMatch(expectedUrl, driver, sa);
-            
-            // find all the images. from hero section. and print the name of all the images. 
+
+            // find all the images. from hero section. and print the name of all the images.
 //            List<WebElement> allHeadings = driver.findElements(By.cssSelector(".carousel-caption h5"));
             List<WebElement> allSlides = driver.findElements(
             	    By.xpath("//div[@id='carouselExampleDark']//div[contains(@class,'carousel-item')]")
