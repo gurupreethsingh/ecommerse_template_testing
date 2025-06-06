@@ -42,7 +42,7 @@ public class CategoryEndpoints {
                 .when()
                 .get(CategoryRoutes.GET_CATEGORY_PRODUCT_COUNTS_URL);
     }
-
+    														
     // 5. GET - Get category by ID
     public static Response getCategoryById(String categoryId) {
         String url = CategoryRoutes.GET_CATEGORY_BY_ID_URL.replace(":id", categoryId);
