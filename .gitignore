@@ -14,10 +14,17 @@ logs/
 .idea/
 *.iml
 *.iws
+out/
+
+# Ignore NetBeans-specific folders
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.build/
 
 # Ignore test output folders
 test-output/
-
 
 # Ignore screenshot/image folders
 failed_screenshots/
@@ -26,8 +33,17 @@ captures/
 snaps/
 screens/
 
+# Ignore Selenium driver executables
+*.exe
+drivers/
+
 # Maven target directory
 target/
+
+# Maven wrapper files (optional)
+.mvn/
+mvnw
+mvnw.cmd
 
 # Gradle build directory
 build/
@@ -36,8 +52,18 @@ build/
 *.tmp
 *.swp
 *~
+*.bak
 
 # OS-specific files
 .DS_Store
 Thumbs.db
+desktop.ini
 /.metadata/
+
+# VS Code workspace files
+.vscode/
+
+# Ignore environment or secret configuration files (optional)
+.env
+*.env
+*.properties
